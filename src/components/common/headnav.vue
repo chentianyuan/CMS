@@ -1,6 +1,6 @@
 <template>
 	<div class="navWrap">
-		<a href="javascript:" class="mine"><span class="fa fa-grav"></span>###</a>
+		<a href="javascript:" class="mine"><span class="fa fa-grav"></span>exploreC</a>
 		<ul>
 			<li :class="active == 0 ? 'active':''"><router-link :to="{path:'./posts'}" class="nav">文章</router-link></li>
 			<li :class="active == 1 ? 'active':''"><router-link :to="{path:'./tag'}" class="nav">标签</router-link></li>
@@ -37,9 +37,14 @@ $w : #fff;
 	height:50px;
 	line-height:50px;
 	padding:25px;
+	text-decoration:none;
 		span{
+			transition:all 1s;
 			font-size:2.2rem;
 			margin-right:20px;
+			&:hover{
+				transform:rotate(320deg);
+			}
 		}
 	}
 	ul{
@@ -55,10 +60,10 @@ $w : #fff;
 				border:0;
 				text-decoration:none;
 				color:#999999;
+				transition:all 0.5s;
 			}
 			.nav:hover{
 				line-height:90px;
-				transition:all 0.3s;
 				padding-bottom:4px;
 				border-bottom:4px solid #fff;
 				color:$w;

@@ -44,7 +44,7 @@ html{
 	padding:0;
 }
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif, Font-Awesome !important;
+  font-family: 'Comic Sans MS', 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif,Font-Awesome !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -53,5 +53,15 @@ html{
 }
 a{
 	cursor:pointer;
+}
+.clearfix:after{
+      content:'';
+      height:'';
+      display:block;
+      visibility:hidden;
+      clear:both;
+}
+.clearfix{
+      zoom:1;
 }
 </style>
