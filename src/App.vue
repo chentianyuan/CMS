@@ -20,7 +20,7 @@
 	  	//从全局数据中获取到当前登录者的信息权限
 			login:function(){
 				return this.$store.state.whertherlogin
-			}			
+			}
 	  },
 	  methods:{
 	  	update(){
@@ -36,8 +36,12 @@
 </script>
 
 <style>
-html{
+html,body{
+	height:100%;
 	font-size:14px;
+}
+body{
+	line-height:1;
 }
 *{
 	margin:0;

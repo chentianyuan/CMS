@@ -45,6 +45,7 @@ export default {
   				this.info = '密码输入有误，请重新输入'
   			}else{
   				this.info = '登录成功,正在准备跳转...'
+  				//这里可以用promise改写的
   				setTimeout(()=>{
 					this.$store.dispatch('login')
   					this.$router.push({path:'posts'})

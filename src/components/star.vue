@@ -1,5 +1,5 @@
 <template>
-	<div class="star">
+	<div class="star" id="star">
 		<div id="background" class="wall"></div>
         <div id="midground" class="wall"></div>
         <div id="foreground" class="wall"></div>
@@ -8,21 +8,36 @@
 
 <script>
 	export default{
-		name:'star'
+		name:'star',
+		mounted(){
+			//console.log(this.$store.state.mainHeight)
+		},
+		computed:{
+			mainHeight:function(){		
+				return this.$store.state.mainHeight
+			}
+		},
+		watch:{
+			mainHeight:function(){
+				//通过computed计算出的数据也可以被监听
+				document.querySelector("#star").style.height = this.$store.state.mainHeight + 'px'
+				//console.log(this.$store.state.mainHeight)
+				//console.log('设置了')
+			}
+		}
 	}
 </script>
 
 <style scoped="scoped" lang="scss">
-    .star{
-    	z-index:-1;
-    }
-    .wall{
+    .wall,.star{
         position: absolute;
         top: 0;
         left: 0;
         bottom: 0;
         right: 0;
         z-index:-1;
+        overflow:hidden;
+        min-height:100%;
     }
     @mixin set($time,$z:0){
     	//scss混合应用
@@ -31,6 +46,7 @@
 	    -ms-animation: STAR-MOVE #{$time} linear infinite;
 	    animation: STAR-MOVE #{$time} linear infinite; 	
     	z-index:$z;
+    	height:200%;
     }
     
     #background {

@@ -1,5 +1,5 @@
 <template>
-	<div class="navWrap">
+	<header class="navWrap">
 		<a href="javascript:" class="mine"><span class="fa fa-grav"></span>exploreC</a>
 		<ul>
 			<li :class="active == 0 ? 'active':''"><router-link :to="{path:'./posts'}" class="nav">文章</router-link></li>
@@ -7,7 +7,7 @@
 			<li :class="active == 2 ? 'active':''"><router-link :to="{path:'./search'}" class="nav">搜索</router-link></li>
 			<li :class="active == 3 ? 'active':''"><router-link :to="{path:'./about'}" class="nav">关于</router-link></li>
 		</ul>
-	</div>
+	</header>
 </template>
 
 <script>
@@ -29,6 +29,7 @@ $w : #fff;
 .navWrap{
 	display:flex;
 	width:100%;
+	height:100px;
 	.mine{
 	color:$w;
 	cursor:pointer;
