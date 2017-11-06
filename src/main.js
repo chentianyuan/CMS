@@ -7,6 +7,7 @@ import axios from 'axios'
 import Vuex from 'vuex'
 import store from './store'
 import 'font-awesome/css/font-awesome.css'
+import './assets/css/animate.css';
 
 Vue.config.productionTip = false
 

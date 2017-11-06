@@ -1,18 +1,21 @@
 <template>
 	<div class="container" id="contain">
 		<headnav active="1"></headnav>
-		<div class="mainBox">
+		<div class="mainBox" id="main">
 			<header>
 				<h1>All Tags</h1>
 				<ul>
-					<li v-for="(tag,index) in tags">{{tag.tagName}}</li>
+					<li v-for="(tag,index) in tags" @click="goAnchor(tag.tagName,index)">{{tag.tagName}}</li>
 				</ul>
 			</header>
 			<div class="eachTag" v-for="(tag,index) in tags">
-				<h3>#{{tag.tagName}}</h3>
+				<h3 :id="tag.tagName" :class="bounce==index?'bounce animated':''"># {{tag.tagName}}</h3>
 				<ul class="tag-article-list">
 					<li v-for="(article,index) in tag.tagList">
-						{{article.title}}
+						<a href="javascript:" @click="readArticle(article)">
+							{{article.title}}
+						<span>{{article.date}}</span>
+						</a>
 					</li>
 				</ul>
 			</div>
@@ -47,11 +50,39 @@
 	  		gulp:[],
 	  		webpack:[],
 	  		socket:[],
-	  		weixin:[]
+	  		weixin:[],
+	  		bounce:-1
 	  	}
 	  },
 	  components:{
 	  	headnav
+	  },
+	  methods:{
+	  	goAnchor(id,index){
+	  		console.log(index)
+	  		var timer = null
+	  		var curTop = 0
+	  		var anchor = document.getElementById(id)
+	  		//console.log(anchor.offsetTop)
+       		//document.body.scrollTop = anchor.offsetTop
+			timer = setInterval(()=>{
+				curTop += 8
+				if(curTop < anchor.offsetTop-30){
+	  				window.scrollTo(0,curTop)					
+				}else{
+					window.scrollTo(0,anchor.offsetTop-30)
+					clearInterval(timer)
+					this.bounce = index
+					setTimeout(()=>{
+						this.bounce = -1
+					},1000)
+				}
+			},5)
+
+	  	},
+	  	readArticle(article){
+	  		this.$router.push({path:'/posts/article',query:article})
+	  	}
 	  },
 	  mounted(){
 	  	//promise的功能是可以将复杂的异步处理轻松地进行模式化
@@ -59,6 +90,7 @@
 			this.$axios.post('/api/getArticles').then(res=>{
 		  		this.mainlist = res.data.msg
 		  		//console.log(this.mainlist)
+		  		document.getElementById("main").style.opacity = 1		  		
 		  		resolve()
 		  }).catch(err=>{
 		  		reject(err)
@@ -121,6 +153,7 @@
 </script>
 
 <style scoped="scoped" lang="scss">
+$black:#999999;
 .container{
 	width:100%;
 	.mainBox{
@@ -128,19 +161,49 @@
 		max-width:800px;
 		margin:0 auto;
 		overflow:hidden;
+		opacity:0;
+		transition:all 0.5s;
 		header ul{
 			margin-top:20px;
 			li{
+				font-size:1.5rem;
 			    display: inline-block;
 				margin: 10px 20px 10px 0;
+				cursor:pointer;
 				transition: all .3s;
+			&:hover{
+				transform:scale(1.1);
+			}
 			}
 		}
 		.eachTag{
 			margin-top:50px;
 			h3{
 				font-size:1.4rem;
+				transition:all 1s;
 			};
+			
+			ul{
+				margin-left:20px;
+				list-style:none;
+				li{
+					margin:20px 0;
+					a{
+						transition: all .3s;					
+						font-size:1.1rem;
+						border-bottom: 0 none;
+						color:#fff;
+						text-decoration:none; 
+						&:hover{
+							border-bottom:2px solid $black;							
+						}
+					}
+					span{
+						font-size:1rem;
+						color:$black;
+					}
+				}
+			}
 		}
 	}
 }

@@ -1,12 +1,13 @@
 <template>
 	<div class="container" id="contain">
+		<router-view></router-view>
 		<headnav active="0"></headnav>
 		<div class="mainBox" id="main">			
 			<article v-for="(article,index) in articleshow" class="ass clearfix" @mousemove="skew($event,index)" @mouseleave="clearRot(index)">
-				<h2>{{article.title}}</h2>
+				<h2 @click="readArticle(article)">{{article.title}}</h2>
 				<section>{{article.date}}</section>
 				<p>{{article.content}}</p>
-				<a href="javascript:" @click="readmore">阅读全部</a>
+				<a href="javascript:" @click="readArticle(article)">阅读全部</a>
 			</article>
 		</div>
 		<div class="page">
@@ -76,9 +77,6 @@
 	  		},0)
 
 	  	},
-	  	readmore(){
-	  		
-	  	},
 	  	skew(e,index){
 	  		//获取文章dom元素
 	  		var dom = document.querySelector('#main').childNodes[index]
@@ -120,92 +118,23 @@
 	  	},
 	  	other(index){
 	  		this.cur = index
+	  	},
+	  	readArticle(article){
+	  		this.$router.push({path:'/posts/article',query:article})
 	  	}
 	  }
 	}
 </script>
 
 <style scoped="scoped" lang="scss">
-	$black:#999999;
-	.container{
-		width:100%;
-		.mainBox{
-			max-width:800px;
-			margin:0 auto;
-			overflow:hidden;
-			perspective:800px;
-			transition:all 0.5s;
-			opacity:0;
-			.ass{
-				margin-bottom:10px;
-				background:rgba(51,51,51,0.8);							
-				/*三维效果设置，父元素设置景深perspective，容器设置transform-style为3d*/
-				transform-style: preserve-3d;
-				transition:all 0.2s;   
-				box-shadow: 0 5px 5px rgba(255,255,255,0.1);
-				border-radius:15px;
-				h2{
-					font-size:1.5rem;
-					font-weight:500;
-					padding:10px;
-					letter-spacing:2px;	
-					cursor:pointer;
-					transition:all 0.2s;
-				}
-				h2:hover{
-					//color:$black;
-					//text-decoration:underline;
-					transform:scale(1.1);
-					letter-spacing:4px;
-				}
-				section{
-					color:$black;
-					padding:5px;
-				}
-				p{
-					text-align:left;
-					padding:10px 120px 10px;
-					cursor:pointer;
-					letter-spacing:1px;
-					
-				}
-				a{
-					float:right;
-					color:$black;
-					padding:10px;
-					margin:10px;
-					text-decoration:none;
-					border-bottom:1px solid $black; 
-					&:hover{
-						color:#fff;
-						background:#000000;
-						border-color:#000000;
-					}
-				}
-			}
-		}
-		//分页
-		.page{
-			z-index:20;
-			position:absolute;
-			//暂时不用border-radius: 3px 3px 0 0;
-			width:40px;
-			top:50%;
-			right:50px;
-			box-sizing:border-box;
-			color:$black;
-			background: rgba(51, 51, 51, 0.8);
-			.page-item{
-				cursor:pointer;
-				height:40px;
-				line-height:40px;			
-				padding:5px 0;	
-				transition:all 1s;
-			}
-			.active{
-				color:#fff;
-				transform:scale(1.4);
-			}
-		}
-	}
+ @import '../../assets/css/post.scss';
+ .ass p{
+ 	box-sizing:border-box;
+ 	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp:4;
+	overflow: hidden;
+	text-overflow:ellipsis;
+	max-height:67px;
+ }
 </style>

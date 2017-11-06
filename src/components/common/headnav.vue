@@ -2,10 +2,10 @@
 	<header class="navWrap">
 		<a href="javascript:" class="mine"><span class="fa fa-grav"></span>exploreC</a>
 		<ul>
-			<li :class="active == 0 ? 'active':''"><router-link :to="{path:'./posts'}" class="nav">文章</router-link></li>
-			<li :class="active == 1 ? 'active':''"><router-link :to="{path:'./tag'}" class="nav">标签</router-link></li>
-			<li :class="active == 2 ? 'active':''"><router-link :to="{path:'./search'}" class="nav">搜索</router-link></li>
-			<li :class="active == 3 ? 'active':''"><router-link :to="{path:'./about'}" class="nav">关于</router-link></li>
+			<li :class="active == 0 ? 'active':''"><router-link :to="{path:'../posts'}" class="nav">文章</router-link></li>
+			<li :class="active == 1 ? 'active':''"><router-link :to="{path:'../tag'}" class="nav">标签</router-link></li>
+			<li :class="active == 2 ? 'active':''"><router-link :to="{path:'../search'}" class="nav">搜索</router-link></li>
+			<li :class="active == 3 ? 'active':''"><router-link :to="{path:'../about'}" class="nav">关于</router-link></li>
 		</ul>
 	</header>
 </template>

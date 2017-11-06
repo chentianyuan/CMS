@@ -9,7 +9,7 @@ router.post('/api/login',(req,res)=>{
 	//findOne为单查
 	//find会查出集合里面所有的文档
 
-	console.log(req.body)
+	//console.log(req.body)
 	//查出users表中名为name的人的pwd的值
 	db.users.findOne({name},"pwd",(err,doc)=>{
 		if(err){
@@ -59,6 +59,19 @@ router.post('/api/getArticles',(req,res)=>{
 
 	})
 
+router.post('/api/getoneArticle',(req,res)=>{
+	db.posts.find({_id:req.body.queryid},(err,doc)=>{
+		if(err){
+			console.log(err)
+			return
+		}
+		if(doc){			
+			res.send({state:1,msg:doc})
+		}else{
+			res.send({state:0})
+		}
+	})
+})
 //每次想要使用一个表，必须新建一个表
 //	db.posts.create({"content":"测试文章","date":"2017/10/28 10:13:1"},(err,doc)=>{
 //		if(err){
