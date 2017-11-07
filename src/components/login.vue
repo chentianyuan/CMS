@@ -1,7 +1,7 @@
 <template>
 	<div id="login">
 	  <div class="form">
-	      <i class="fa fa-grav fa-3x"></i>
+	      <i class="fa fa-grav fa-3x" ref="fa"></i>
 	    <p class="input">
 	      <i class="fa fa-user fa-fw"></i>
 	      <input type="text"
@@ -46,17 +46,18 @@ export default {
   			}else{
   				this.info = '登录成功,正在准备跳转...'
   				//这里可以用promise改写的
+				//采用这种方式也能获取并操作dom
+  				this.$refs.fa.style.webkitTransform = "rotate(360deg)"		
   				setTimeout(()=>{
 					this.$store.dispatch('login')
   					this.$router.push({path:'posts'})
   				},1000)
   			}
-  		}).catch(err=>{
+  		}).catch(err=>{	
   			console.log(err)
   		})
   	},
   	test(value){
-  		//console.log(123)
   		if(value==0&&this.name==''){
   			this.info = '请输入用户名'
   		}else if(value==1&&this.pwd==''){
@@ -83,6 +84,7 @@ export default {
 }
 i,p,button{
 	color:#eeeeee;
+	transition:all 1s;
 }
 .form{
 	.icon{

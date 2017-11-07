@@ -30,6 +30,7 @@
 	  name: 'tag',
 	  data(){
 	  	return{
+	  		//可优化，应从数据拿到数据后，生成含有的标签
 	  		tags:[
 	  		{tagName:'Vue',tagList:[]},
 	  		{tagName:'javascript',tagList:[]},

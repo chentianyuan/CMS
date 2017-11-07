@@ -1,6 +1,6 @@
 <template>
 	<div class="container" id="contain">
-		<router-view></router-view>
+		<!--<router-view></router-view>-->
 		<headnav active="0"></headnav>
 		<div class="mainBox" id="main">			
 			<article v-for="(article,index) in articleshow" class="ass clearfix" @mousemove="skew($event,index)" @mouseleave="clearRot(index)">
@@ -11,7 +11,9 @@
 			</article>
 		</div>
 		<div class="page">
+			<div class="page-item  fa fa-chevron-left" @click="other(cur-1)"></div>
 			<div class="page-item" v-for="index in pageNum" :class="cur==index?'active':''" @click="other(index)">{{index}}</div>
+			<div class="page-item  fa fa-chevron-right" @click="other(cur+1)"></div>
 		</div>
 	</div>
 </template>
@@ -42,7 +44,7 @@
 	  	var P1 = new Promise((resolve,reject)=>{
 			this.$axios.post('/api/getArticles').then(res=>{
 		  		this.articles = res.data.msg
-		  		this.pageNum = Math.ceil(res.data.msg.length/this.everyPagenum) //向上取整
+		  		this.pageNum = Math.ceil(this.articles.length/this.everyPagenum) //向上取整
 		  		document.getElementById("main").style.opacity = 1
 		  		resolve()
 		  }).catch(err=>{
@@ -117,7 +119,15 @@
 	  		document.querySelector('#main').childNodes[index].style.webkitTransform = "rotate(0deg)"
 	  	},
 	  	other(index){
-	  		this.cur = index
+	  		if(index > Math.ceil(this.articles.length/this.everyPagenum)){
+	  			alert('已经是最后一页')
+	  			return
+	  		}else if(index < 1){
+	  			alert('已经是第一页')
+	  			return
+	  		}else{	
+	  			this.cur = index
+	  		}
 	  	},
 	  	readArticle(article){
 	  		this.$router.push({path:'/posts/article',query:article})
@@ -137,4 +147,9 @@
 	text-overflow:ellipsis;
 	max-height:67px;
  }
+ @media all and (max-width: 1200px) {
+    p{
+    	padding:10px 20px 10px !important;
+    }
+}
 </style>

@@ -24,12 +24,12 @@
 	  },
 	  methods:{
 	  	update(){
-	  		setTimeout(()=>{	
-	  			if(!this.login && this.$route.path != '/'){
-	  				alert('请登陆后查看')
-		  			this.$router.push({path:'/'})
-		  		}		
-  		},100)
+//	  		setTimeout(()=>{	
+//	  			if(!this.login && this.$route.path != '/'){
+//		  				alert('请登陆后查看')
+//			  			this.$router.push({path:'/'})
+//			  		}		
+//	  		},100)
 	  	}
 	  }
 	}
@@ -57,6 +57,7 @@ body{
 }
 a{
 	cursor:pointer;
+	text-decoration:none;
 }
 .clearfix:after{
       content:'';
@@ -67,5 +68,10 @@ a{
 }
 .clearfix{
       zoom:1;
+}
+@media all and (max-width: 1200px) {
+    html{
+    	font-size:10px;
+    }
 }
 </style>

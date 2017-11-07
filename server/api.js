@@ -60,7 +60,7 @@ router.post('/api/getArticles',(req,res)=>{
 	})
 
 router.post('/api/getoneArticle',(req,res)=>{
-	db.posts.find({_id:req.body.queryid},(err,doc)=>{
+	db.posts.find({account:req.body.acount},(err,doc)=>{
 		if(err){
 			console.log(err)
 			return
