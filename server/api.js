@@ -31,18 +31,6 @@ router.post('/api/login',(req,res)=>{
 		}
 	})
 
-//  数据库再出错便用思思酱测试
-//	db.User.create({"name":"fy","pwd":"789"},(err,doc)=>{
-//		if(err){
-//			console.log(err)
-//			return
-//		}
-//		console.log('插入成功')
-//	})
-	
-//console.log(db.User)
-	//res.sendStatus(200)
-	//console.log('成功')
 })
 
 router.post('/api/getArticles',(req,res)=>{
