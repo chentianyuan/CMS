@@ -32,7 +32,7 @@
 	  mounted(){
 	  	setTimeout(()=>{
 	  		this.$store.dispatch('setheight',document.querySelector("#contain").offsetHeight) 
-		  	document.getElementById("main").style.opacity = 1
+		  	this.show("main")
 	  	},0)
 	  },
 	  components:{

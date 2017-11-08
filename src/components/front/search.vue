@@ -36,7 +36,7 @@
 	  	headnav
 	  },
 	  mounted(){
-	  	document.getElementById("main").style.opacity = 1
+		  	this.show("main")	  		
 		  	this.$axios.post('/api/getArticles').then(res=>{
 		  		this.articles = res.data.msg
 		  	}).catch(err=>{  		

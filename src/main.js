@@ -16,6 +16,9 @@ Vue.config.productionTip = false
 //axios.defaults.withCredentials = true 
 Vue.use(Vuex)
 Vue.prototype.$axios = axios //Vue实例添加axios方法
+Vue.prototype.show = id =>{
+	document.querySelector('#'+id).style.opacity = 1
+}
 
 /* eslint-disable no-new */
 new Vue({

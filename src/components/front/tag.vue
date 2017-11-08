@@ -91,7 +91,7 @@
 			this.$axios.post('/api/getArticles').then(res=>{
 		  		this.mainlist = res.data.msg
 		  		//console.log(this.mainlist)
-		  		document.getElementById("main").style.opacity = 1		  		
+		  		this.show("main")		  		
 		  		resolve()
 		  }).catch(err=>{
 		  		reject(err)

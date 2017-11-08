@@ -45,7 +45,9 @@
 			this.$axios.post('/api/getArticles').then(res=>{
 		  		this.articles = res.data.msg
 		  		this.pageNum = Math.ceil(this.articles.length/this.everyPagenum) //向上取整
-		  		document.getElementById("main").style.opacity = 1
+		  		//此处可以添加到vue全局函数中，在main.js中注册vue.prototype.show = id=>{document.getELementById(id).style.opacity = 1}
+		  		//document.getElementById("main").style.opacity = 1
+		  		this.show("main")
 		  		resolve()
 		  }).catch(err=>{
 		  		reject(err)

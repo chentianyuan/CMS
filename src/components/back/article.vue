@@ -53,7 +53,7 @@
 				this.article = res.data.msg[0]
 				setTimeout(()=>{
 					this.$store.dispatch('setheight',document.querySelector("#contain").offsetHeight) 
-		  			document.getElementById("main").style.opacity = 1
+		  			this.show("main")	  		
 		  		},0)
 			}).catch(err=>{
 				console.log(err)
