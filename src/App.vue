@@ -2,15 +2,17 @@
   <div id="app">
   	<star></star>
     <router-view/>
+    <backtoTop></backtoTop>
   </div>
 </template>
 
 <script>
 	import star from './components/star'
+	import backtoTop from './components/common/backtoTop'
 	export default {
 	  name: 'app',
 	  components:{
-	  	star
+	  	star,backtoTop
 	  },
 	  watch:{
 	  	//route只能使用watch监听，因为$route作为已存在的对象，使用computed会出现意想不到的错误

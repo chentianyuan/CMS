@@ -10,6 +10,7 @@ function resolve (dir) {
 
 module.exports = {
   entry: {
+  	//配置入口文件
     app: './src/main.js'
   },
   output: {
