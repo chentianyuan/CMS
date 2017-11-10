@@ -23,4 +23,4 @@ npm run dev
 
 另外po主大四狗，错过秋招，在此诚求一份初级前端工程师的offer
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+For a detailed explanation on how things work, check out the [guide](http://www.jianshu.com/p/040b29217316)
