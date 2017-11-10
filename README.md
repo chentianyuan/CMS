@@ -1,6 +1,6 @@
 # blog
 
-> 博客管理系统
+> 博客管理系统 [项目简介](http://www.jianshu.com/p/040b29217316)
 
 ## Build Setup
 
